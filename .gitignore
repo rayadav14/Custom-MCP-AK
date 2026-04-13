@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.edgerc
+contract_ctr_*
+EOF

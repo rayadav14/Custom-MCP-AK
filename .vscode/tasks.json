@@ -1,0 +1,71 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Setup: Create venv & install deps",
+      "type": "shell",
+      "command": "python3 -m venv .venv && .venv/bin/pip install --upgrade pip && .venv/bin/pip install -r requirements.txt",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Run: Akamai MCP Server",
+      "type": "shell",
+      "command": ".venv/bin/python server.py",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^(ERROR|WARNING):\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Starting Akamai MCP",
+          "endsPattern": "MCP server running"
+        }
+      }
+    },
+    {
+      "label": "Test: Ping MCP Server",
+      "type": "shell",
+      "command": ".venv/bin/python -c "from akamai_client import akamai_get; print(akamai_get('/papi/v1/contracts'))"",
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Install: Add new dependency",
+      "type": "shell",
+      "command": ".venv/bin/pip install ${input:packageName} && .venv/bin/pip freeze > requirements.txt",
+      "group": "build",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "packageName",
+      "type": "promptString",
+      "description": "Package name to install (e.g. httpx)"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.debugpy",
+    "ms-python.black-formatter",
+    "ms-python.pylint",
+    "ms-vscode-remote.remote-ssh",
+    "ms-vscode-remote.remote-ssh-edit",
+    "GitHub.copilot",
+    "GitHub.copilot-chat",
+    "donjayamanne.python-environment-manager",
+    "christian-kohler.path-intellisense",
+    "ms-python.vscode-pylance"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "workbench.startupEditor": "none",
+  "chat.mcp.discovery.enabled": {},
+  "python.languageServer": "None",
+  "chat.mcp.access": "all",
+  "claudeCode.useTerminal": true
+}
